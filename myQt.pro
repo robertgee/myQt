@@ -7,6 +7,7 @@
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+requires(qtConfig(filedialog))
 
 TARGET = myQt
 TEMPLATE = app
@@ -26,8 +27,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    highlighter.cpp
+        highlighter.cpp \
+        mdichild.cpp
 
 HEADERS += \
         mainwindow.h \
-    highlighter.h
+        highlighter.h \
+        mdichild.h
+
+RESOURCES += \
+        myqt.qrc
