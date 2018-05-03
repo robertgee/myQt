@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     readSettings();
 
 //    setCentralWidget(editor);
+
     setWindowTitle(tr("myQt Color Syntax Highlighter"));
     setUnifiedTitleAndToolBarOnMac(true);
 }
@@ -87,9 +88,14 @@ bool MainWindow::loadFile(const QString &fileName)
     MdiChild *child = createMdiChild();
     const bool succeeded = child->loadFile(fileName);
     if (succeeded)
+    {
         child->show();
+    }
     else
+    {
         child->close();
+    }
+
     MainWindow::prependToRecentFiles(fileName);
     return succeeded;
 }
@@ -170,23 +176,6 @@ void MainWindow::openRecentFile()
     if (const QAction *action = qobject_cast<const QAction *>(sender()))
         openFile(action->data().toString());
 }
-
-//void MainWindow::setupEditor()
-//{
-//    QFont font;
-//    font.setFamily("Courier");
-//    font.setFixedPitch(true);
-//    font.setPointSize(10);
-
-//    editor = new QTextEdit;
-//    editor->setFont(font);
-
-//    highlighter = new Highlighter(editor->document());
-
-//    QFile file("mainwindow.h");
-//    if (file.open(QFile::ReadOnly | QFile::Text))
-//        editor->setPlainText(file.readAll());
-//}
 
 void MainWindow::save()
 {

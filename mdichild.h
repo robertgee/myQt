@@ -5,6 +5,8 @@
 
 #include <QTextEdit>
 
+#include "highlighter.h"
+
 class MdiChild : public QTextEdit
 {
     Q_OBJECT
@@ -19,6 +21,7 @@ public:
     bool saveFile(const QString &fileName);
     QString userFriendlyCurrentFile();
     QString currentFile() { return curFile; }
+    void setupEditor();
 
 protected:
     void closeEvent(QCloseEvent *event) override;
@@ -33,6 +36,11 @@ private:
 
     QString curFile;
     bool isUntitled;
+
+
+
+    Highlighter *highlighter;
+
 };
 
 #endif

@@ -6,6 +6,23 @@ MdiChild::MdiChild()
 {
     setAttribute(Qt::WA_DeleteOnClose);
     isUntitled = true;
+    setupEditor();
+}
+
+void MdiChild::setupEditor()
+{
+    QFont font;
+    font.setFamily("Courier");
+    font.setFixedPitch(true);
+    font.setPointSize(10);
+
+    setFont(font);
+
+    highlighter = new Highlighter(document());
+
+    QFile file("mainwindow.h");
+    if (file.open(QFile::ReadOnly | QFile::Text))
+        setPlainText(file.readAll());
 }
 
 void MdiChild::newFile()

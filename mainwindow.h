@@ -1,8 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "highlighter.h"
-
 #include <QMainWindow>
 
 class MdiChild;
@@ -80,9 +78,6 @@ private:
     QAction *nextAct;
     QAction *previousAct;
     QAction *windowMenuSeparatorAct;
-
-    QTextEdit *editor;
-    Highlighter *highlighter;
 
 };
 
